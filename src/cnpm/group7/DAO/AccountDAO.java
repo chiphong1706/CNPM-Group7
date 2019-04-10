@@ -2,6 +2,7 @@ package cnpm.group7.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import cnpm.group7.model.Account;
@@ -24,6 +25,21 @@ public class AccountDAO {
 		boolean result = stmt.executeUpdate() > 0 ? true : false;
 		stmt.close();
 		
+		return result;
+	}
+	
+	public Account getGoogleAccount(String id_gg) throws SQLException {
+		Account result = null;
+		String sql = "SELECT * FROM account where id_gg = ?";
+		PreparedStatement stmt = cnn.prepareStatement(sql);
+		stmt.setString(1, id_gg);
+		ResultSet rs = stmt.executeQuery();
+		if (rs.next()) {
+			result = new Account();
+			result.setId(rs.getInt("id"));
+			result.setEmail(rs.getString("email"));
+			result.setId_google(rs.getString("id_gg"));
+		}
 		return result;
 	}
 }
