@@ -1,0 +1,150 @@
+body {
+	background: url('conan.jpg');
+	background-size: cover;
+	color: #fff;
+	font-family: sans-serif;
+}
+
+.login-box {
+	width: 300px;
+	padding: 30px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: rgba(0, 0, 0, 0.5); /*0.5 là độ trong suốt*/
+}
+
+.avatar {
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	top: -50px;
+	left: calc(50% - 50px); /*50% sẽ đẩy nó qua phần bên phải, lùi lại 50px (nửa kích thước avatar) để nó nằm đúng ngay chính giữa*/
+
+}
+
+.login-box h2, .modal h2 {
+	text-align: center;
+}
+
+.login-box p {
+	margin: 0; /*để cho email và input email xích lại thôi*/
+}
+
+.login-box input, .modal input {
+	width: 100%;
+	margin-bottom: 20px;
+	border: none;
+	outline: none; /*làm mất cái khung có màu xanh khi kích chuột vào*/
+	background: transparent;
+	border-bottom: 1px solid #fff;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+}
+
+.login-box button, .modal button {
+	width: 100%;
+	margin-bottom: 10px;
+	height: 40px;
+	cursor: pointer;
+	border-radius: 20px;
+	outline: none;
+	/*border: none;*/
+	background: #f06;
+	color: #fff;
+	font-size: 16px;
+}
+
+.login-box button:hover, .modal button:hover {
+	background: #f00;
+}
+
+.login-box a {
+	text-decoration: none;
+	color: #00d;
+}
+
+.login-box a:hover {
+	color: #f00;
+}
+
+
+
+
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: rgba(0,0,0,0.9);;
+  border: 1px solid #888;
+  width: 300px;
+  padding: 30px;
+  position: absolute;
+  top: calc(50% - 180px); /*180 = width/2 + padding*/
+  left: calc(50% - 180px);
+  /*transform: translate(-50%, -50%);*/
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  color: #f00;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover
+{
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+
+.login-social {
+	text-align: center;
+}
+
+
