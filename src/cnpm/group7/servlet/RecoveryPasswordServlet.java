@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.dao.AccountDAO;
-import tool.SendMail;
+import cnpm.group7.model.dao.AccountDAO;
+import cnpm.group7.tool.SendMail;
 
 /**
  * Servlet implementation class RecoveryServlet

@@ -1,8 +1,8 @@
-package model.dao;
+package cnpm.group7.model.dao;
 
 import java.sql.*;
 
-import connection.DBConnection;
+import cnpm.group7.connection.DBConnection;
 
 public class AccountDAO {
 	

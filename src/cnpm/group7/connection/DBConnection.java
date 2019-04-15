@@ -1,4 +1,4 @@
-package connection;
+package cnpm.group7.connection;
 
 import java.sql.*;
 

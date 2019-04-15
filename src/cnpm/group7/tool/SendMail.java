@@ -1,4 +1,4 @@
-package tool;
+package cnpm.group7.tool;
 
 import java.util.Properties;
 
