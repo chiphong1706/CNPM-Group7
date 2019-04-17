@@ -14,4 +14,16 @@
    <filter-name>GlobalFilter</filter-name>
    <url-pattern>/login-google</url-pattern>
 </filter-mapping>
+<filter-mapping>
+   <filter-name>GlobalFilter</filter-name>
+   <url-pattern>/login-facebook</url-pattern>
+</filter-mapping>
+<filter-mapping>
+   <filter-name>GlobalFilter</filter-name>
+   <url-pattern>/recovery-password</url-pattern>
+</filter-mapping>
+<filter-mapping>
+   <filter-name>GlobalFilter</filter-name>
+   <url-pattern>/registry</url-pattern>
+</filter-mapping>
  </web-app>
