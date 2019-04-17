@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,14 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+
+<c:if test="${not empty account }">
+<div style="text-align: center; margin: auto">
+	<h2>Welcome to NM-CNPM-Group7's website</h2>
+	<h3>Your email: ${account.email }</h3>
+</div>
+</c:if>
+<c:if test="${empty account }">
 	<div class="login-box">
 		<img src="avatar.png" class='avatar'>
 		<h2>Login with email</h2>
@@ -21,10 +30,12 @@
 		<a href="#" onclick="document.getElementById('id01').style.display='block'">Forget Password?</a>
 	<div class="login-social">
 		<p>Or</p>
-		<img src="facebook-icon.png" width="40px" height="40px" />
-		<img src="google-icon.png" width="40px" height="40px"/>
+		<a><img src="facebook-icon.png" width="40px" height="40px" /></a>
+		<a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/CNPM-Group7/login-google&response_type=code
+    &client_id=559738915667-1fg4su2eif5r7ml48e5jbrkc222mmqa0.apps.googleusercontent.com&approval_prompt=force"><img src="google-icon.png" width="40px" height="40px"/></a>
 	</div>
 	</div>
+	
 
 	<!-- 2.	Hệ thống hiện form Recovery Password.-->
 	<div id="id01" class="modal">
@@ -37,7 +48,7 @@
 			<button type="submit">Get password</button>
 		</form>
 	</div>
-
+</c:if>
 
 <script>
 // Get the modal

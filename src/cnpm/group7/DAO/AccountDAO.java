@@ -54,7 +54,7 @@ public class AccountDAO {
 	}
 	
 	public String getPassword(String email) throws SQLException {
-		PreparedStatement ps = cnn.prepareStatement("SELECT pass FROM Account WHERE email = ?");
+		PreparedStatement ps = cnn.prepareStatement("SELECT password FROM Account WHERE email = ?");
 		ps.setString(1, email);
 		ResultSet rs = ps.executeQuery();
 		if (rs.next()) {
