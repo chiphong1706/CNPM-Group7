@@ -81,4 +81,19 @@ public class AccountDAO {
 		}
 		return null;
 	}
+	
+	public Account getFacebookAccount(String id_fb) throws SQLException {
+		Account result = null;
+		String sql = "select * from account where id_fb = ?";
+		PreparedStatement ps = cnn.prepareStatement(sql);
+		ps.setString(1, id_fb);
+		ResultSet rs = ps.executeQuery();
+		
+		if (rs.next()) {
+			result = new Account();
+			result.setEmail(rs.getString("email"));
+			result.setId_facebook("id_fb");
+		}
+		return result;
+	}
 }
