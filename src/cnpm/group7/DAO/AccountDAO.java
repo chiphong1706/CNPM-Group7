@@ -61,4 +61,24 @@ public class AccountDAO {
 		}
 		return null;
 	}
+	
+	public Account check(String email, String password) {
+		String sql = "SELECT * FROM account WHERE email ='" + email + "' AND password ='"
+				+ password + "'";
+		PreparedStatement ps;
+		try {
+			ps = (PreparedStatement) cnn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				Account account = new Account();
+				account.setEmail(rs.getString("email"));
+				account.setPassword(rs.getString("password"));
+				return account;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

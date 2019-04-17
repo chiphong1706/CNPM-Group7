@@ -19,11 +19,12 @@
 	<div class="login-box">
 		<img src="avatar.png" class='avatar'>
 		<h2>Login with email</h2>
-	<form method="post" >
+	<form method="post" action="LoginServlet" >
 		<p>Email</p>
 		<input type="email" name="email" placeholder="Enter your email" required>
 		<p>Password</p>
 		<input type="password" name="password" placeholder="Enter your password" required>
+		<c:if test="${not empty error_login }"><p style="color: red; font-size: 90%; margin-bottom: 1rem">${error_login }</p></c:if>
 		<button type="submit">Login</button>
 	</form>
 		<!-- 1. Người dùng chọn “Forget Password?” trên form Login with email.-->
@@ -39,7 +40,7 @@
 
 	<!-- 2.	Hệ thống hiện form Recovery Password.-->
 	<div id="id01" class="modal">
-		<form class="modal-content    animate" method="post" action="recovery-password">
+		<form class="modal-content animate" method="post" action="recovery-password">
 		<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 		<h2>Recovery Password</h2>
 			<!-- 3.	Người dùng nhập email đã đăng ký -->
