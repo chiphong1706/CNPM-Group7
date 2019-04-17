@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import cnpm.group7.connection.DBConnection;
 import cnpm.group7.model.Account;
 
 public class AccountDAO {
@@ -41,5 +42,24 @@ public class AccountDAO {
 			result.setId_google(rs.getString("id_gg"));
 		}
 		return result;
+	}
+	
+	public boolean checkEmail(String email) throws ClassNotFoundException, SQLException {
+		PreparedStatement ps = cnn.prepareStatement("SELECT * FROM Account WHERE email = ?");
+		ps.setString(1, email);
+		ResultSet rs = ps.executeQuery();
+		if (rs.next()) 
+			return true;
+		return false;
+	}
+	
+	public String getPassword(String email) throws SQLException {
+		PreparedStatement ps = cnn.prepareStatement("SELECT pass FROM Account WHERE email = ?");
+		ps.setString(1, email);
+		ResultSet rs = ps.executeQuery();
+		if (rs.next()) {
+			return rs.getString(1);
+		}
+		return null;
 	}
 }
