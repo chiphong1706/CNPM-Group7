@@ -31,7 +31,6 @@ public class GlobalFilter implements Filter{
 			try {
 				cnn = ds.getConnection();
 				request.setAttribute("connection", cnn);
-				System.out.println("set connection: "+request.getContextPath());
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}

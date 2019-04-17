@@ -34,17 +34,6 @@ public class Index extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// demo get connection
-		DataSource ds = (DataSource) request.getServletContext().getAttribute("datasource");
-		if (ds != null)
-			try {
-				Connection cnn = ds.getConnection();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		else
-			System.out.println("datasource is null!");
-
 		getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 
