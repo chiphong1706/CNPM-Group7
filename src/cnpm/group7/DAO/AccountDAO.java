@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import cnpm.group7.connection.DBConnection;
 import cnpm.group7.model.Account;
 
 public class AccountDAO {
