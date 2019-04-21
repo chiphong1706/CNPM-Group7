@@ -51,7 +51,7 @@ public class RecoveryPasswordServlet extends HttpServlet {
 		try {
 			//6.	Há»‡ thá»‘ng yĂªu cáº§u cÆ¡ sá»Ÿ dá»¯ liá»‡u kiá»ƒm tra email
 			//8.	CÆ¡ sá»Ÿ dá»¯ liá»‡u tráº£ vá»� káº¿t quáº£ cho há»‡ thá»‘ng
-			if (accountDAO.checkEmail(email)) {
+			if (accountDAO.isExistedEmail(email)) {
 				//9.	Náº¿u email tá»“n táº¡i, há»‡ thá»‘ng yĂªu cáº§u cÆ¡ sá»Ÿ dá»¯ liá»‡u láº¥y ra máº­t kháº©u cá»§a email tÆ°Æ¡ng á»©ng
 				String password = accountDAO.getPassword(email);
 				//11.	Há»‡ thá»‘ng láº¥y máº­t kháº©u gá»­i vĂ o mail ngÆ°á»�i dĂ¹ng
