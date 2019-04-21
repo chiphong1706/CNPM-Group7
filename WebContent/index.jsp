@@ -28,7 +28,8 @@
 		<button type="submit">Login</button>
 	</form>
 		<!-- 1. Người dùng chọn “Forget Password?” trên form Login with email.-->
-		<a href="#" onclick="document.getElementById('id01').style.display='block'">Forget Password?</a>
+		<a href="#" onclick="document.getElementById('id01').style.display='block'">Forget Password?</a> <br>
+		<a href="registry">Sign up!</a>
 	<div class="login-social">
 		<p>Or</p>
 		<a href="https://www.facebook.com/dialog/oauth?client_id=1520573608076236&redirect_uri=https://localhost:8443/AccessFacebook/login-facebook"><img src="facebook-icon.png" width="40px" height="40px" /></a>
