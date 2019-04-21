@@ -43,7 +43,7 @@ public class AccountDAO {
 		return result;
 	}
 	
-	public boolean checkEmail(String email) throws ClassNotFoundException, SQLException {
+	public boolean isExistedEmail(String email) throws ClassNotFoundException, SQLException {
 		PreparedStatement ps = cnn.prepareStatement("SELECT * FROM Account WHERE email = ?");
 		ps.setString(1, email);
 		ResultSet rs = ps.executeQuery();
