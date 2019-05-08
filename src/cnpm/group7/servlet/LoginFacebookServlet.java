@@ -60,6 +60,7 @@ String code = request.getParameter("code");
 					account.setId_facebook(user.getId());
 					aDAO.insertAccount(account);
 				}
+				System.out.println(account.getId()+"\t"+account.getEmail()+ "\t"+account.getId_facebook());
 				HttpSession session = request.getSession();
 				session.setAttribute("account", account);
 			} catch (Exception e) {

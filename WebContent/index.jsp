@@ -32,7 +32,7 @@
 		<a href="registry">Sign up!</a>
 	<div class="login-social">
 		<p>Or</p>
-		<a href="https://www.facebook.com/dialog/oauth?client_id=1520573608076236&redirect_uri=https://localhost:8443/AccessFacebook/login-facebook"><img src="facebook-icon.png" width="40px" height="40px" /></a>
+		<a href="https://www.facebook.com/dialog/oauth?client_id=1520573608076236&redirect_uri=https://localhost:8443/CNPM-Group7/login-facebook"><img src="facebook-icon.png" width="40px" height="40px" /></a>
 		<a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/CNPM-Group7/login-google&response_type=code
     &client_id=559738915667-1fg4su2eif5r7ml48e5jbrkc222mmqa0.apps.googleusercontent.com&approval_prompt=force"><img src="google-icon.png" width="40px" height="40px"/></a>
 	</div>
