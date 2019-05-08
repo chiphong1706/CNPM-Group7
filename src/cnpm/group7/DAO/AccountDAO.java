@@ -44,7 +44,7 @@ public class AccountDAO {
 	}
 	
 	public boolean isExistedEmail(String email) throws ClassNotFoundException, SQLException {
-		PreparedStatement ps = cnn.prepareStatement("SELECT * FROM Account WHERE email = ?");
+		PreparedStatement ps = cnn.prepareStatement("SELECT * FROM Account WHERE email = ? AND password IS NOT NULL");
 		ps.setString(1, email);
 		ResultSet rs = ps.executeQuery();
 		if (rs.next()) 
