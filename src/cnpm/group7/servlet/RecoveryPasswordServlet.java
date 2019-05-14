@@ -42,24 +42,25 @@ public class RecoveryPasswordServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	
-	//5.	Há»‡ thá»‘ng tiáº¿p nháº­n yĂªu cáº§u
+	//5.7.5 Hệ thống tiếp nhận email
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Connection cnn = (Connection) request.getAttribute("connection");
 		AccountDAO accountDAO = new AccountDAO(cnn);
 		String email = request.getParameter("email");
 		String url = "/";
 		try {
-			//6.	Há»‡ thá»‘ng yĂªu cáº§u cÆ¡ sá»Ÿ dá»¯ liá»‡u kiá»ƒm tra email
-			//8.	CÆ¡ sá»Ÿ dá»¯ liá»‡u tráº£ vá»� káº¿t quáº£ cho há»‡ thá»‘ng
+			//5.7.6 Hệ thống yêu cầu cơ sở dữ liệu kiểm tra email
+			//5.7.8 Cơ sở dữ liệu trả về kết quả cho hệ thống
 			if (accountDAO.isExistedEmail(email)) {
-				//9.	Náº¿u email tá»“n táº¡i, há»‡ thá»‘ng yĂªu cáº§u cÆ¡ sá»Ÿ dá»¯ liá»‡u láº¥y ra máº­t kháº©u cá»§a email tÆ°Æ¡ng á»©ng
+				//5.7.9	Nếu email tồn tại, hệ thống yêu cầu cơ sở dữ liệu lấy ra mật khẩu của email tương ứng
+				//5.7.11 Cơ sở dữ liệu trả về mật khẩu
 				String password = accountDAO.getPassword(email);
-				//11.	Há»‡ thá»‘ng láº¥y máº­t kháº©u gá»­i vĂ o mail ngÆ°á»�i dĂ¹ng
+				//5.7.12 Hệ thống lấy mật khẩu gửi vào mail người dùng
 				SendMail.sendMail(email, "Máº­t kháº©u khĂ´i phá»¥c", "ChĂ o báº¡n, máº­t kháº©u Ä‘Äƒng nháº­p cá»§a báº¡n lĂ : " + password);
-				//12.	Há»‡ thá»‘ng thĂ´ng bĂ¡o khĂ´i phá»¥c máº­t kháº©u thĂ nh cĂ´ng
+				//5.7.13 Hệ thống thông báo khôi phục mật khẩu thành công
 				url = "/recovery-success.jsp";
 			} else {
-				//13.	Náº¿u email khĂ´ng tá»“n táº¡i, há»‡ thá»‘ng thĂ´ng bĂ¡o email khĂ´ng tá»“n táº¡i
+				//5.8 Nếu email không tồn tại, hệ thống thông báo email không tồn tại
 				url = "/recovery-failure.jsp";
 			}
 		} catch (ClassNotFoundException | SQLException e) {
