@@ -42,30 +42,36 @@ public class RecoveryPasswordServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	
-	//5.7.5 Hệ thống tiếp nhận email
+	//5.7.5 Há»‡ thá»‘ng tiáº¿p nháº­n email
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Connection cnn = (Connection) request.getAttribute("connection");
 		AccountDAO accountDAO = new AccountDAO(cnn);
 		String email = request.getParameter("email");
 		String url = "/";
 		try {
-			//5.7.6 Hệ thống yêu cầu cơ sở dữ liệu kiểm tra email
-			//5.7.8 Cơ sở dữ liệu trả về kết quả cho hệ thống
+			//5.7.6 Há»‡ thá»‘ng yÃªu cáº§u cÆ¡ sá»Ÿ dá»¯ liá»‡u kiá»ƒm tra email
+			//5.7.8 CÆ¡ sá»Ÿ dá»¯ liá»‡u tráº£ vá»� káº¿t quáº£ cho há»‡ thá»‘ng
 			if (accountDAO.isExistedEmail(email)) {
-				//5.7.9	Nếu email tồn tại, hệ thống yêu cầu cơ sở dữ liệu lấy ra mật khẩu của email tương ứng
-				//5.7.11 Cơ sở dữ liệu trả về mật khẩu
+				//5.7.9	Náº¿u email tá»“n táº¡i, há»‡ thá»‘ng yÃªu cáº§u cÆ¡ sá»Ÿ dá»¯ liá»‡u láº¥y ra máº­t kháº©u cá»§a email tÆ°Æ¡ng á»©ng
+				//5.7.11 CÆ¡ sá»Ÿ dá»¯ liá»‡u tráº£ vá»� máº­t kháº©u
 				String password = accountDAO.getPassword(email);
-				//5.7.12 Hệ thống lấy mật khẩu gửi vào mail người dùng
-				SendMail.sendMail(email, "Máº­t kháº©u khĂ´i phá»¥c", "ChĂ o báº¡n, máº­t kháº©u Ä‘Äƒng nháº­p cá»§a báº¡n lĂ : " + password);
-				//5.7.13 Hệ thống thông báo khôi phục mật khẩu thành công
+				//5.7.12 Há»‡ thá»‘ng láº¥y máº­t kháº©u gá»­i vÃ o mail ngÆ°á»�i dÃ¹ng
+				SendMail.sendMail(email, "MÃ¡ÂºÂ­t khÃ¡ÂºÂ©u khÄ‚Â´i phÃ¡Â»Â¥c", "ChÄ‚Â o bÃ¡ÂºÂ¡n, mÃ¡ÂºÂ­t khÃ¡ÂºÂ©u Ã„â€˜Ã„Æ’ng nhÃ¡ÂºÂ­p cÃ¡Â»Â§a bÃ¡ÂºÂ¡n lÄ‚Â : " + password);
+				//5.7.13 Há»‡ thá»‘ng thÃ´ng bÃ¡o khÃ´i phá»¥c máº­t kháº©u thÃ nh cÃ´ng
 				url = "/recovery-success.jsp";
 			} else {
-				//5.8 Nếu email không tồn tại, hệ thống thông báo email không tồn tại
+				//5.8 Náº¿u email khÃ´ng tá»“n táº¡i, há»‡ thá»‘ng thÃ´ng bÃ¡o email khÃ´ng tá»“n táº¡i
 				url = "/recovery-failure.jsp";
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			try {
+				cnn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
 		rd.forward(request, response);

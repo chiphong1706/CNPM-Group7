@@ -3,6 +3,8 @@ package cnpm.group7.servlet;
 import java.io.IOException;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -55,6 +57,11 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		account = acountDao.check(request.getParameter("email"), MD5.encryption(request.getParameter("password")));
+		try {
+			cnn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		if (account != null) {
 
 			session.setAttribute("account", account);
@@ -63,7 +70,6 @@ public class LoginServlet extends HttpServlet {
 		} else {
 			request.setAttribute("error_login", "Email or Passord incorrect! ");
 			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-
 		}
 	}
 

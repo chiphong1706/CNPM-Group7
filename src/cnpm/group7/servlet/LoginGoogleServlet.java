@@ -59,6 +59,12 @@ public class LoginGoogleServlet extends HttpServlet {
 				session.setAttribute("account", account);
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
+			} finally {
+				try {
+					cnn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		response.sendRedirect("index");

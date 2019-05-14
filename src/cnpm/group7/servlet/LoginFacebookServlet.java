@@ -1,6 +1,7 @@
 package cnpm.group7.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -65,8 +66,13 @@ String code = request.getParameter("code");
 				session.setAttribute("account", account);
 			} catch (Exception e) {
 				e.printStackTrace();
+			} finally {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
-			
 			response.sendRedirect("index");
 		}
 	}
