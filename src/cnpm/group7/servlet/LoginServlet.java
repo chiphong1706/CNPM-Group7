@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import cnpm.group7.DAO.AccountDAO;
 import cnpm.group7.model.Account;
-import cnpm.group7.tool.MD5;
 
 /**
  * Servlet implementation class UserServlet
@@ -56,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 
-		account = acountDao.check(request.getParameter("email"), MD5.encryption(request.getParameter("password")));
+		account = acountDao.check(request.getParameter("email"), request.getParameter("password"));
 		try {
 			cnn.close();
 		} catch (SQLException e) {

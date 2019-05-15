@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import cnpm.group7.DAO.AccountDAO;
 import cnpm.group7.model.Account;
-import cnpm.group7.tool.MD5;
 
 /**
  * Servlet implementation class RegistryServlet
@@ -49,7 +48,7 @@ public class RegistryServlet extends HttpServlet {
 			if (!accountDAO.isExistedEmail(email)) {
 				Account account = new Account();
 				account.setEmail(email);
-				account.setPassword(MD5.encryption(password));
+				account.setPassword(password);
 				accountDAO.insertAccount(account);
 				HttpSession session = request.getSession();
 				session.setAttribute("account", account);
