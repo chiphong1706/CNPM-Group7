@@ -9,13 +9,6 @@
 </head>
 <body>
 
-<c:if test="${not empty account }">
-<div style="text-align: center; margin: auto">
-	<h2>Welcome to NM-CNPM-Group7's website</h2>
-	<h3>Your email: ${account.email }</h3>
-</div>
-</c:if>
-<c:if test="${empty account }">
 <!-- 4.7.3 Trang login hien thi form Login-->
 	<div class="login-box">
 		<img src="avatar.png" class='avatar'>
@@ -51,7 +44,7 @@
 			<button type="submit">Get password</button>
 		</form>
 	</div>
-</c:if>
+
 
 <script>
 // Get the modal
