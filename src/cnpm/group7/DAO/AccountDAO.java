@@ -57,7 +57,7 @@ public class AccountDAO {
 	
 	//4.7.16 CSDL lay ra mat khau cua email tuong ung
 	public String getPassword(String email) throws SQLException {
-		PreparedStatement ps = cnn.prepareStatement("SELECT password FROM Account WHERE email = ?");
+		PreparedStatement ps = cnn.prepareStatement("SELECT password FROM Account WHERE email = ? AND password IS NOT NULL");
 		ps.setString(1, email);
 		ResultSet rs = ps.executeQuery();
 		if (rs.next()) {

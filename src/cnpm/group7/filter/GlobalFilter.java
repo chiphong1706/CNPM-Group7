@@ -11,7 +11,6 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 public class GlobalFilter implements Filter{
@@ -24,7 +23,6 @@ public class GlobalFilter implements Filter{
 	public void doFilter(ServletRequest sRequest, ServletResponse sResponse, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) sRequest;
-		HttpServletResponse response = (HttpServletResponse) sResponse;
 		Connection cnn = (Connection) request.getAttribute("connection");
 		if (cnn == null) {
 			DataSource ds = (DataSource) request.getServletContext().getAttribute("datasource");
@@ -35,7 +33,15 @@ public class GlobalFilter implements Filter{
 				System.out.println(e.getMessage());
 			}
 		}
-		chain.doFilter(request, response);
+		chain.doFilter(sRequest, sResponse);
+		
+		if (cnn != null) {
+			try {
+				cnn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
