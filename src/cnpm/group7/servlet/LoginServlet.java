@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect(url);
 		} else {
 			request.setAttribute("error_login", "Email or Passord incorrect! ");
-			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
 		}
 	}
 
