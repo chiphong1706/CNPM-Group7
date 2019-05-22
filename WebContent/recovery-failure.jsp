@@ -7,6 +7,7 @@
 <title>Khôi phục mật khẩu</title>
 </head>
 <body>
+<!-- 4.7.22 Man hinh hien thi thong bao email chua dang ky -->
 <div style="text-align: center;">
 	<h2>Khôi phục thất bại!</h2>
 	<p>Bạn đã nhập email chưa được đăng ký tài khoản!<p>

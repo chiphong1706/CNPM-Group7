@@ -44,7 +44,7 @@ public class AccountDAO {
 	}
 	
 	
-	//5.7.7 Cơ sở dữ liệu kiểm tra email
+	//4.7.13 CSDL kiem tra email
 	public boolean isExistedEmail(String email) throws ClassNotFoundException, SQLException {
 		PreparedStatement ps = cnn.prepareStatement("SELECT * FROM Account WHERE email = ? AND password IS NOT NULL");
 		ps.setString(1, email);
@@ -55,7 +55,7 @@ public class AccountDAO {
 	}
 	
 	
-	//5.7.10 Cơ sở dữ liệu lấy ra mật khẩu của email tương ứng
+	//4.7.16 CSDL lay ra mat khau cua email tuong ung
 	public String getPassword(String email) throws SQLException {
 		PreparedStatement ps = cnn.prepareStatement("SELECT password FROM Account WHERE email = ?");
 		ps.setString(1, email);
