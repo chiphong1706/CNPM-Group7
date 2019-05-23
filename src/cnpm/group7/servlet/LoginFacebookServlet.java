@@ -36,14 +36,18 @@ public class LoginFacebookServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-String code = request.getParameter("code");
+
+		String code = request.getParameter("code");
 		
 		if (code == null || code.isEmpty()) {
 			System.out.println("Empty Facebook code");
 			RequestDispatcher dis = request.getRequestDispatcher("index.jsp");
 			dis.forward(request, response);
 		} else {
+//			7.7. RestFB.getToken(code) - He thong gui yeu cau lay access token tu code duoc gui ve
 			String accessToken = RestFB.getToken(code);
+
+//			7.8. RestFB.getUserInfo(accessToken) - He thong gui yeu cau lay thong tin nguoi dung tu access Token
 			User user = RestFB.getUserInfo(accessToken);
 			request.setAttribute("id", user.getId());
 			request.setAttribute("name", user.getName());
@@ -54,14 +58,21 @@ String code = request.getParameter("code");
 			AccountDAO aDAO = new AccountDAO(conn);
 			
 			try {
+//				7.9. getFacebookAccount(Id) - Truy van xem co tai khoan nao ton tai ung voi Id nay khong?
 				Account account = aDAO.getFacebookAccount(user.getId());
+
+//				Alternative flow - Khong co tai khoan tuong ung voi Id nay
 				if (account == null) {
+
+//					7.9.1. Tao tai khoan moi voi email va Id facebook
 					account = new Account();
 					account.setEmail(user.getEmail());
 					account.setId_facebook(user.getId());
+//					7.9.2. Them tai khoan nay vao Database
 					aDAO.insertAccount(account);
 				}
 				System.out.println(account.getId()+"\t"+account.getEmail()+ "\t"+account.getId_facebook());
+//				7.9.10. Them tai khoan vao session moi
 				HttpSession session = request.getSession();
 				session.setAttribute("account", account);
 			} catch (Exception e) {
@@ -73,6 +84,7 @@ String code = request.getParameter("code");
 					e.printStackTrace();
 				}
 			}
+//			Chuyen huong ve trang index.
 			response.sendRedirect("index");
 		}
 	}
